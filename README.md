@@ -1,4 +1,4 @@
-# RideUnviersity
+# RideUniversity
 
 This is the home of our HTML/CSS files and nything that will be added onto our website. <br> 
 We will list out what we want to accomplish for our website below and check them off as we accomplish it. <br>
