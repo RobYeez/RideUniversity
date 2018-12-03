@@ -1,0 +1,53 @@
+<!-- Link to CSS -->
+{% block css%}
+<link rel="stylesheet"  type= "text/css" href="{{ url_for('static', filename= 'index.css') }}">
+{% endblock css %}
+
+<!-- Body -->
+{% extends "layout.html" %}
+{% block content %}
+<!-- PARALLAX PART -->
+<div class="image1">
+    <div class="ptext">
+      <span class="border">
+        RideUniversity
+      </span>
+    </div>
+  </div>
+
+<section class="section section1-light">
+    <h1>Our Mission</h1>
+    <!-- FIX color contrast -->
+    <p> Here at RideUniversity, we aim to provide an eco-friendly, inexpensive, safe, and easy to use platform for students to find rides to their desired destination  </p>
+  </section>
+
+<div class="image2">
+    <div class="ptext">
+      <span class="border trans">
+        <!-- Fix the color contrast -->
+        <p>Sign Up! or Log in!</p>
+      </span>
+    </div>
+  </div>
+
+ <section class="section section2-dark">
+    <h2> Add more info here</h2>
+    <p> XD part 2 xD </p>
+  </section>
+
+
+<div class="image3">
+    <div class="ptext">
+      <span class="border trans">
+        <!-- Fix the color contrast -->
+        <p>MORE INFO TBD</p>
+      </span>
+    </div>
+  </div>
+
+ <section class="section section3-dark">
+    <h2>Add more info here extra</h2>
+    <p> XD part 3 xD </p>
+  </section>
+
+{% endblock content %}
