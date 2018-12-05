@@ -2,11 +2,14 @@ from flask import Flask, render_template, url_for, redirect, flash
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from forms import SignUpForm, LoginForm
+from flask_socketio import SocketIO, join_room, leave_room
+from flask_login import LoginManager
 app = Flask(__name__)
 
 
 # Secret key helps to keep the site secure
 app.config['SECRET_KEY'] = 'RDSS2134C#++-ABC'
+<<<<<<< HEAD
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
@@ -21,6 +24,10 @@ class User(db.Model):
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+=======
+socketio = SocketIO(app)
+login_manager = LoginManager();
+>>>>>>> 660f7fbfa09c58f2030889c638efe70b0c3a605f
 
 
 @app.route("/")
@@ -28,15 +35,13 @@ class User(db.Model):
 def home():
     return render_template('index.html')
 
-
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
     form = SignUpForm()
     if form.validate_on_submit():
-        flash(f'Account created for {form.username.data}!', 'success')
+        flash('Account created for {form.username.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('signup.html', title='Sign Up', form=form)
-
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -49,6 +54,27 @@ def login():
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', title='Login', form=form)
 
+# @login_manager.user_loader
+
+# messages page
+@app.route("/messages")
+def messages():
+    return render_template('messages.html', title='Messages')
+def messageReceived(methods=['GET', 'POST']):
+    print('message was received!!!')
+
+
+@socketio.on('my event')
+def handle_my_custom_event(json, methods=['GET', 'POST']):
+    print('received my event: ' + str(json))
+    socketio.emit('my response', json, callback=messageReceived)
+
+# receiving messages
+# @socketio.on('message')
+
+
+# sending messages
+# @socketio.on()
 
 @app.route("/biography")
 def bio():
@@ -57,3 +83,5 @@ def bio():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    socketio.run(app, debug=True)
+    login_manager.init_app(app, debug=True)
