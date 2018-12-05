@@ -64,6 +64,11 @@ def drive():
     return render_template('drive.html', title='Drive')
 
 
+@app.route("/contacts")
+def contacts():
+    return render_template('contacts.html', title="Contacts")
+
+
 # @login_manager.user_loader
 
 # messages page
