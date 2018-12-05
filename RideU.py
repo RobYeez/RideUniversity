@@ -53,6 +53,17 @@ def login():
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', title='Login', form=form)
 
+
+@app.route("/ride")
+def ride():
+    return render_template('ride.html', title='Ride')
+
+
+@app.route("/drive")
+def drive():
+    return render_template('drive.html', title='Drive')
+
+
 # @login_manager.user_loader
 
 # messages page
@@ -81,6 +92,7 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
 
 @app.route("/biography")
 def bio():
+    # {%%} <- at "bio.html" to change to non hardcode person
     return render_template('bio.html', title="Biography")
 
 

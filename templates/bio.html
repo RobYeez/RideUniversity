@@ -2,16 +2,21 @@
 {% block content%}
 
 	<div class="container">
+		<h1> Robert Yee </h1>
 		<!-- INSERT PICTURE -->
-		<img src="https://images.unsplash.com/photo-1525490829609-d166ddb58678?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b65868b1a6efd69d8606827bbeb9934b&auto=format&fit=crop&w=749&q=80" class="rounded float-left img-thumbnail" alt="...">
-		<!-- USER BIO -->
-		<div class="input-group input-group-lg">
-  			<div class="input-group-prepend">
-    			<span class="input-group-text">User Biography</span>
-  			</div>
-  			<textarea class="form-control" aria-label="With textarea"></textarea>
+		  <div class="h-25 d-inline-block col-xs-6" style="width: 240px">
+		<img src="https://images.unsplash.com/photo-1529429617124-95b109e86bb8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80" class="rounded float-left img-thumbnail " alt="Responsive image">
 		</div>
-		<input class="btn btn-primary btn-sm" type="change" value="change">
+		<!-- USER BIO -->
+		<div class="input-group input-group-lg float-right col-sm" >
+  			<div class="input-group-prepend">
+    			<!-- <span class="input-group-text"> <h2>User Biography </h2></span> -->
+  		
+  			<textarea aria-label="With textarea" rows="13" placeholder="User information will be put here"></textarea>
+  		</div>
+
+		</div>
+		<!-- <button class="btn btn-primary btn-sm"></button>  -->
 
 	</div>
 {% endblock content %}
