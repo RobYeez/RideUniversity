@@ -26,13 +26,15 @@ body, html{
 /*properties for image 2*/
 .image2{
   background-image:url('https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ddde6662ffe093d60786a3e20e7ca1cd&auto=format&fit=crop&w=600&q=60');
-  min-height:400px;
+  /*min-height:400px;*/
+  min-height:100%;
+
 }
 
 /*properties for image 3*/
 .image3 {
   background-image:url('https://images.unsplash.com/photo-1532746490455-60a27cbb2a81?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9482f274a9121d796dcc46e6b7b00e31&auto=format&fit=crop&w=750&q=80');
-  min-height:400px;
+  min-height:100%;
 }
 
 /*given paragraph text*/
@@ -44,6 +46,7 @@ body, html{
   color:#000;
   font-size:27px;
   letter-spacing:5px;
+
   /*text-transform:uppercase;*/
 }
 /*for RideUniversity in specific*/
@@ -66,10 +69,11 @@ body, html{
 }
 
 /*for second border properties*/
-.ptext .border.trans{
-  background-color:transparent;
+.ptext .bordert-trans{
+  background-color:#111;
   /*I added my own color*/
-  color:black;
+  color:white;
+  padding:20px;
 }
 /*for second bottom of border properties*/
 .section2-dark{
