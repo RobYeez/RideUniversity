@@ -13,10 +13,10 @@
     html,body {
       height: 100%;
     }
- /*   * {
+    * {
   box-sizing: border-box;
-}*/
-  
+}
+
 #myInput {
   background-image: url('/css/searchicon.png');
   background-position: 10px 12px;
@@ -44,19 +44,15 @@
   color: black;
   display: block
 }
-/*
+
 #myUL li a:hover:not(.header) {
   background-color: #eee;
-}*/
+}
 
   </style>
-
-
 </head> 
-
-
 <body>
-  <h1> RideUniversity </h1>
+  <h1> UniversityRides </h1>
   <div id="map"></div>
 
   <script type="text/javascript">
@@ -90,6 +86,22 @@
           infowindow.open(map, marker);
         }
       })(marker, i));
+       // init directions service
+      var dirService = new google.maps.DirectionsService();
+      var dirRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true});
+      dirRenderer.setMap(map);
+
+      // highlight a street
+      var request = {
+        origin: "33.9806, -117.3755",
+        destination: "32.8801, -117.2340",
+        travelMode: google.maps.TravelMode.DRIVING
+        };
+        dirService.route(request, function(result, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            dirRenderer.setDirections(result);
+          }
+      });
     }
   </script>
     <!--Load the API from the specified URL
@@ -99,43 +111,12 @@
     -->
 
 
-  <!-- <form class="bd-search d-flex align-items-center">
-  <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="search" class="form-control ds-input" id="search-input" placeholder="Search..." autocomplete="off" data-siteurl="https://getbootstrap.com" data-docs-version="4.1" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; left: 0px; right: auto; display: none;"><div class="ds-dataset-1"></div></span></span>
-  </form> -->
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names or rides..." title="Type in a name">
-
-
-<table class="table" id="myUL">
-  <thead class="thead-dark table-bordered">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Location</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td><a href="biography">Robert</td>
-      <td>Yee</td>
-      <td>Riverside -> San Diego</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Dylan</td>
-      <td>Siv</td>
-      <td>Riverside -> San Fransico</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Katherine</td>
-      <td>Way</td>
-      <td>Riverside -> Los Angeles</td>
-    </tr>
-  </tbody>
-</table>
+<ul id="myUL">
+  <li><a href="biography">Robert Yee | Riverside -> San Diego</a></li>
+  <li><a href="#">Dylan Siv | San Bernardino -> UCSD</a></li>
+  <li><a href="#">Katherine Way | Moreno Valley -> La Jolla</a></li>
 
 <script>
 function myFunction() {
